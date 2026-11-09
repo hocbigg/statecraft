@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+
+  <title>Hocbigg - Statecraft</title>
+  <meta name="description" content="Path to a free self-taught education in Statecraft.">
+  <meta name="author" content="hocbigg">
+
+  <link rel="canonical" href="https://hocbigg.github.io/statecraft/">
+  <meta property="og:title" content="Hocbigg - Statecraft">
+  <meta property="og:description" content="Path to a free self-taught education in Statecraft.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hocbigg.github.io/statecraft/">
+  <link rel="icon" href="https://hocbigg.github.io/images/favicon.ico">
+
+  <style>
+:root {
+  color-scheme: light dark;
+
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --muted: #595959;
+  --border: #e0e0e0;
+  --th-bg: #f6f8fa;
+  --code-bg: #f4f4f4;
+  --link: #0969da;
+  --focus-ring: #0969da;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --fg: #e6edf3;
+    --muted: #8b949e;
+    --border: #30363d;
+    --th-bg: #161b22;
+    --code-bg: #161b22;
+    --link: #58a6ff;
+    --focus-ring: #58a6ff;
+  }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 1.5rem auto;
+  max-width: 60rem;
+  padding: 0 1rem 3.5rem;
+  background-color: var(--bg);
+  color: var(--fg);
+  font: 1.15rem/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Cú pháp hiện đại thay thế cho word-wrap */
+  overflow-wrap: break-word;
+}
+
+.site-header {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 0.5rem 1.25rem;
+  font-size: 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+nav a:hover, 
+nav a:focus-visible {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+nav .nav-brand {
+  color: var(--fg);
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.skip-link {
+  position: absolute;
+  transform: translateY(-150%);
+  left: 1rem;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0.5rem 1rem;
+  z-index: 100;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(1rem);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--fg);
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 2rem;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border);
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.15rem;
+}
+
+h6 {
+  font-size: 1rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+p, ul, ol, blockquote, table {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+li > ul,
+li > ol {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+li {
+  margin-bottom: 0.25rem;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+a:has(img) {
+  text-decoration: none;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-header .page-subtitle {
+  color: var(--muted);
+  font-size: 1.15rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.page-header img {
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.875em;
+  background-color: var(--code-bg);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+pre {
+  background-color: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  tab-size: 2;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  font-size: 0.9rem;
+  border-radius: 0;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.75rem;
+  vertical-align: top;
+}
+
+th {
+  background-color: var(--th-bg);
+  font-weight: 600;
+}
+
+blockquote {
+  margin-inline: 0;
+  border-left: 4px solid var(--border);
+  padding-left: 1rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  body {
+    max-width: none;
+    color: #000;
+    background: #fff;
+  }
+  .skip-link, nav {
+    display: none;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <nav aria-label="Main Navigation">
+    <ul>
+      <li><a href="https://hocbigg.github.io/" class="nav-brand">Hocbigg</a></li>
+      <li><a href="/statecraft/">Statecraft</a></li>
+      <li><a href="/statecraft/advanced_topics.html">Advanced Topics</a></li>
+      <li><a href="https://github.com/hocbigg/statecraft" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in new tab)</span></a></li>
+    </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article>
+<header class="page-header">
+  <img src="/images/logo.png" alt="Hocbigg logo">
+  <h1>Hocbigg - Statecraft</h1>
+  <p class="page-subtitle">Path to a free self-taught education in Statecraft.</p>
+  <p class="last-updated"><small>Last updated on: <time datetime="2026-10-11">2026-10-11</time></small></p>
+</header>
+<h2 id="introduction">Introduction</h2>
+<p>Statecraft is the art, theory, and practice of exercising political authority, managing state survival, and aligning national power with strategic purpose. It addresses two enduring questions that cannot be answered in isolation: what a state ought to do in pursuit of justice and order, and what a state can actually do given the frictions of human nature, domestic institutions, and the international system. This curriculum approaches statecraft not as abstract academic theory or partisan commentary, but as a discipline of practical political judgment, institutional mechanics, and strategic decision-making.</p>
+<p>This curriculum is designed for independent, self-directed learners starting from scratch. No prior background in political science, philosophy, economics, or constitutional law is assumed. </p>
+<p>It intentionally avoids academic research methods, statistical modeling, and formal methodological debates. Instead, it focuses on the foundational concepts, canonical texts, and operational realities that every practitioner and serious student of politics must understand before specializing.</p>
+<h3 id="how-to-move-through-the-curriculum">How to Move Through the Curriculum</h3>
+<p>The curriculum follows a deliberate linear progression from normative foundations to institutional mechanics and external foreign policy. You should work through the subjects in the order presented:</p>
+<ul>
+<li><strong>Normative Foundations (Subjects 1–2):</strong> Classical, medieval, and early modern political thought explore why the state exists, where sovereign authority originates, and what constitutes legitimate rule. Moving chronologically from Plato through Marx establishes the intellectual vocabulary that all later political analysis assumes.</li>
+<li><strong>Strategic Doctrine (Subject 3):</strong> The strategy classics shift the focus from moral legitimacy to the harsh realities of power, deterrence, and competitive advantage. Here, you study how statesmen and commanders calibrate ends, ways, and means under conditions of uncertainty and conflict.</li>
+<li><strong>Domestic Institutions (Subject 4):</strong> This stage examines the internal machinery of governance, contrasting constitutional designs, separation of powers, and the political survival strategies of democratic and authoritarian leaders.</li>
+<li><strong>The Interstate Arena (Subject 5):</strong> The final subject expands outward to the anarchic international system, examining systemic theories of interstate conflict, alliances, and the historical practice of bilateral and multilateral diplomacy.</li>
+</ul>
+<p>Because the earlier subjects rely on dense historical treatises, do not read primary sources cold. Watch the paired university lectures first to gain interpretive context, read the designated core chapters of each primary text, and use the companion texts to clarify complex arguments. A sustainable pace for self-study is working through one primary text or major topic every two to three weeks.</p>
+<p>This curriculum covers only the mandatory foundational core of statecraft. Once you have completed these five subjects, you can head to <a href="advanced_topics.html">Advanced Topics</a> to specialize in tracks such as geoeconomics, comparative authoritarianism, grand strategy, or defense management.</p>
+<h2 id="curriculum">Curriculum</h2>
+<h3 id="classical-political-thought-plato-to-aquinas">Classical Political Thought: Plato to Aquinas</h3>
+<p>This subject examines classical and medieval perspectives on justice, the classification of constitutional regimes, civic virtue, and natural law through foundational philosophical texts and guided lectures.</p>
+<p><a href="https://oyc.yale.edu/political-science/plsc-114" target="_blank" rel="noopener noreferrer">Introduction to Political Philosophy, PLSC 114: Lectures 1–6 (Steven B. Smith, Yale Open Courses)</a> - Watch these opening six lectures first to establish historical context and interpretive frameworks for Greek and classical political philosophy before opening the primary texts.</p>
+<p><a href="https://www.gutenberg.org/ebooks/1497" target="_blank" rel="noopener noreferrer">The Republic (Plato, Jowett translation)</a> - The cornerstone of Western political theory; prioritize Books II–IV for the definition of the just city, Books VI–VII for the philosopher-king and the allegory of the cave, and Books VIII–IX for regime degeneration.</p>
+<p><a href="https://classics.mit.edu/Aristotle/politics.html" target="_blank" rel="noopener noreferrer">The Politics (Aristotle, Jowett translation)</a> - Read as an empirical and institutional counterpart to Plato's idealism, focusing on Books I–IV for Aristotle's analysis of citizenship, the household, and the comparative classification of constitutions.</p>
+<p><a href="https://www.gutenberg.org/ebooks/47001" target="_blank" rel="noopener noreferrer">On Duties (Cicero, Miller translation)</a> - Extends classical political thought into Roman republican practice; study Books I and II for Cicero's treatment of the tension between moral rectitude and political utility.</p>
+<p><a href="https://www.gutenberg.org/ebooks/45304" target="_blank" rel="noopener noreferrer">The City of God, Volume I (Augustine, Dods translation)</a> - A medieval transition text that redefines the purpose of earthly politics; focus selectively on Books IV, XIV, and XIX to understand Augustine's separation of the earthly and heavenly cities.</p>
+<p><a href="https://www.newadvent.org/summa/2090.htm" target="_blank" rel="noopener noreferrer">Treatise on Law, Summa Theologiae (Thomas Aquinas, New Advent)</a> - The classical synthesis of Aristotelian ethics and Christian theology; read Questions 90 through 97 to master the four tiers of law and the moral boundaries of sovereign legislation.</p>
+<p><a href="https://books.google.com/books?isbn=9780871404657" target="_blank" rel="noopener noreferrer">On Politics: A History of Western Political Thought (Alan Ryan)</a> - An optional comprehensive reference history that provides contextual narrative across classical and medieval eras; consult relevant chapters alongside difficult primary texts.</p>
+<h3 id="modern-political-thought-machiavelli-to-marx">Modern Political Thought: Machiavelli to Marx</h3>
+<p>This subject investigates the rise of the modern sovereign state, social contract theory, individual rights, popular sovereignty, and modern critiques of political economy.</p>
+<p><a href="https://oyc.yale.edu/political-science/plsc-114" target="_blank" rel="noopener noreferrer">Introduction to Political Philosophy, PLSC 114: Lectures 7–24 (Steven B. Smith, Yale Open Courses)</a> - Use these lectures as the primary historical guide through the early modern and modern canon, aligning each lecture with its corresponding primary author.</p>
+<p><a href="https://oyc.yale.edu/political-science/plsc-118" target="_blank" rel="noopener noreferrer">The Moral Foundations of Politics, PLSC 118 (Ian Shapiro, Yale Open Courses)</a> - A complementary, argument-focused lecture series that interrogates state legitimacy and citizen obligation through utilitarian, Marxist, and social contract perspectives.</p>
+<p><a href="https://books.google.com/books?isbn=9780199695213" target="_blank" rel="noopener noreferrer">An Introduction to Political Philosophy (Jonathan Wolff)</a> - A concise conceptual textbook that organizes political obligations, rights, and distribution analytically rather than chronologically; study alongside the lectures.</p>
+<p><a href="https://www.gutenberg.org/ebooks/1232" target="_blank" rel="noopener noreferrer">The Prince (Niccolò Machiavelli, Marriott translation)</a> - The founding text of modern political realism; read early to grasp the autonomy of political action, reason of state, and the tactical acquisition and maintenance of power.</p>
+<p><a href="https://www.gutenberg.org/ebooks/3207" target="_blank" rel="noopener noreferrer">Leviathan (Thomas Hobbes)</a> - Establishes modern social contract theory and sovereign absolutism; concentrate on Part I for the state of nature and Part II for the structure of the commonwealth.</p>
+<p><a href="https://www.gutenberg.org/ebooks/7370" target="_blank" rel="noopener noreferrer">Two Treatises of Government (John Locke)</a> - The foundational defense of limited constitutional government, property rights, and the right of revolution; concentrate study on the Second Treatise.</p>
+<p><a href="https://www.gutenberg.org/ebooks/46333" target="_blank" rel="noopener noreferrer">The Social Contract &amp; Discourses (Jean-Jacques Rousseau, Cole translation)</a> - Provides the republican alternative to Hobbes and Locke by framing legitimate authority in terms of direct popular sovereignty and the general will.</p>
+<p><a href="https://www.gutenberg.org/ebooks/3420" target="_blank" rel="noopener noreferrer">A Vindication of the Rights of Woman (Mary Wollstonecraft)</a> - An essential Enlightenment intervention applying natural rights and universal reason to civic education and female political inclusion; read the foundational first three chapters.</p>
+<p><a href="https://www.gutenberg.org/ebooks/34901" target="_blank" rel="noopener noreferrer">On Liberty (John Stuart Mill)</a> - The primary statement of nineteenth-century liberal thought; Chapters 1 through 3 define the harm principle, freedom of thought, and limits on state coercion.</p>
+<p><a href="https://www.gutenberg.org/ebooks/61" target="_blank" rel="noopener noreferrer">The Communist Manifesto (Karl Marx and Friedrich Engels)</a> - A concise materialist critique of industrial capitalism and the modern state, framing government as an instrument of class rule; pairs with Shapiro's lectures on Marxism.</p>
+<p><a href="https://www.gutenberg.org/ebooks/815" target="_blank" rel="noopener noreferrer">Democracy in America, Volume 1 (Alexis de Tocqueville, Reeve translation)</a> - A landmark empirical study of democratic political culture; focus on the sections detailing municipal decentralization, civil associations, and the tyranny of the majority.</p>
+<h3 id="the-classics-of-strategy-and-statecraft">The Classics of Strategy and Statecraft</h3>
+<p>This subject explores canonical Eastern and Western strategic treatises addressing the relationship between political objectives, armed conflict, intelligence, alliances, and grand strategy.</p>
+<p><a href="https://www.gutenberg.org/ebooks/7142" target="_blank" rel="noopener noreferrer">The History of the Peloponnesian War (Thucydides, Crawley translation)</a> - The earliest comprehensive case study of great-power conflict and structural realism; essential sections include the debate at Sparta, Pericles' Funeral Oration, the Melian Dialogue, and the Sicilian expedition.</p>
+<p><a href="https://books.google.com/books?isbn=9780684827902" target="_blank" rel="noopener noreferrer">The Landmark Thucydides (ed. Robert B. Strassler)</a> - An enriched, annotated print alternative to the Crawley translation, featuring detailed tactical maps, running headers, and interpretive appendices.</p>
+<p><a href="https://www.gutenberg.org/ebooks/132" target="_blank" rel="noopener noreferrer">The Art of War (Sun Tzu, Giles translation)</a> - A concise treatise on strategic deception, maneuvering, and psychological advantage, prioritizing victory without kinetic conflict; read in direct contrast to Clausewitzian direct engagement.</p>
+<p><a href="https://archive.org/details/kautilyasarthashastra" target="_blank" rel="noopener noreferrer">Kautilya's Arthashastra (trans. R. Shamasastry)</a> - A classical Indian manual of state survival and political pragmatism; focus on the sections detailing ministerial selection, covert intelligence operations, and the interstate mandala system.</p>
+<p><a href="https://www.gutenberg.org/ebooks/10827" target="_blank" rel="noopener noreferrer">Discourses on Livy (Niccolò Machiavelli, Thomson translation)</a> - Machiavelli's treatment of institutional durability and strategic expansion in republics; read Book I alongside The Prince to balance monarchical cunning with republican civic defense.</p>
+<p><a href="https://www.gutenberg.org/ebooks/1946" target="_blank" rel="noopener noreferrer">On War (Carl von Clausewitz, Graham translation)</a> - The definitive modern philosophy of military strategy; read Book 1 to master war as a continuation of politics and Book 8 for war plan development.</p>
+<p><a href="https://books.google.com/books?isbn=9781594203510" target="_blank" rel="noopener noreferrer">On Grand Strategy (John Lewis Gaddis)</a> - A modern analytical synthesis linking ancient strategic theory to modern historical practice, evaluating how statesmen calibrate unlimited political goals against limited physical means.</p>
+<h3 id="political-institutions-and-regime-types">Political Institutions and Regime Types</h3>
+<p>This subject examines the internal architecture of states, including constitutional design, separation of powers, comparative regime types, and the survival mechanics of democratic and authoritarian rulers.</p>
+<p><a href="https://openstax.org/details/books/american-government-3e" target="_blank" rel="noopener noreferrer">American Government 3e (OpenStax)</a> - A comprehensive open-access textbook providing a clear introduction to constitutional structure, legislative procedure, judicial review, and federalism within a presidential republic.</p>
+<p><a href="https://www.gutenberg.org/ebooks/1404" target="_blank" rel="noopener noreferrer">The Federalist Papers (Alexander Hamilton, James Madison, and John Jay)</a> - The essential primary source on constitutional mechanics and institutional checks; read Papers 10, 51, and 78 alongside OpenStax to understand the internal defense of separated powers.</p>
+<p><a href="https://books.google.com/books?isbn=9781608716791" target="_blank" rel="noopener noreferrer">Principles of Comparative Politics (William Roberts Clark, Matt Golder, and Sona Nadenichek Golder)</a> - A foundational comparative politics textbook that expands beyond the single-case American system to systematically analyze parliamentary models, voting systems, and state capacity worldwide.</p>
+<p><a href="https://books.google.com/books?isbn=9781610390446" target="_blank" rel="noopener noreferrer">The Dictator's Handbook: Why Bad Behavior is Almost Always Good Politics (Bruce Bueno de Mesquita and Alastair Smith)</a> - An accessible presentation of selectorate theory that translates institutional mechanics into practical political logic regarding how both autocrats and democrats manage coalition sizes to retain power.</p>
+<h3 id="international-relations-and-diplomacy">International Relations and Diplomacy</h3>
+<p>This subject covers the dynamics of the international system, major systemic theories of interstate behavior, and the historical craft and institutional practice of diplomacy.</p>
+<p><a href="https://www.e-ir.info/publication/international-relations-theory/" target="_blank" rel="noopener noreferrer">International Relations Theory (ed. Stephen McGlinchey, Rosie Walters, and Christian Scheinpflug, E-International Relations)</a> - A peer-reviewed, open-access textbook introducing core theoretical paradigms—including realism, liberalism, and constructivism—with concise applications to modern interstate dynamics.</p>
+<p><a href="https://www.coursera.org/learn/global-diplomacy" target="_blank" rel="noopener noreferrer">Global Diplomacy: Diplomacy in the Modern World (SOAS University of London, Coursera)</a> - An applied online course examining diplomatic communication, multilateral treaty negotiations, and crisis mediation; take this to understand the practical tradecraft of foreign service operations.</p>
+<p><a href="https://books.google.com/books?isbn=9780671510992" target="_blank" rel="noopener noreferrer">Diplomacy (Henry Kissinger)</a> - An expansive historical case study of great-power diplomacy and balance-of-power statecraft from the Peace of Westphalia and the Concert of Nations through the Cold War.</p>
+    </article>
+  </main>
+
+</body>
+</html>

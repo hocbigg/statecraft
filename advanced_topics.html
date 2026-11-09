@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+
+  <title>Advanced Topics: Statecraft</title>
+  <meta name="description" content="Advanced Topics: Statecraft curriculum by hocbigg.">
+  <meta name="author" content="hocbigg">
+
+  <link rel="canonical" href="https://hocbigg.github.io/statecraft/advanced_topics.html">
+  <meta property="og:title" content="Advanced Topics: Statecraft">
+  <meta property="og:description" content="Advanced Topics: Statecraft curriculum by hocbigg.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hocbigg.github.io/statecraft/advanced_topics.html">
+  <link rel="icon" href="https://hocbigg.github.io/images/favicon.ico">
+
+  <style>
+:root {
+  color-scheme: light dark;
+
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --muted: #595959;
+  --border: #e0e0e0;
+  --th-bg: #f6f8fa;
+  --code-bg: #f4f4f4;
+  --link: #0969da;
+  --focus-ring: #0969da;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --fg: #e6edf3;
+    --muted: #8b949e;
+    --border: #30363d;
+    --th-bg: #161b22;
+    --code-bg: #161b22;
+    --link: #58a6ff;
+    --focus-ring: #58a6ff;
+  }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 1.5rem auto;
+  max-width: 60rem;
+  padding: 0 1rem 3.5rem;
+  background-color: var(--bg);
+  color: var(--fg);
+  font: 1.15rem/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Cú pháp hiện đại thay thế cho word-wrap */
+  overflow-wrap: break-word;
+}
+
+.site-header {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 0.5rem 1.25rem;
+  font-size: 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+nav a:hover, 
+nav a:focus-visible {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+nav .nav-brand {
+  color: var(--fg);
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.skip-link {
+  position: absolute;
+  transform: translateY(-150%);
+  left: 1rem;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0.5rem 1rem;
+  z-index: 100;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(1rem);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--fg);
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 2rem;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border);
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.15rem;
+}
+
+h6 {
+  font-size: 1rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+p, ul, ol, blockquote, table {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+li > ul,
+li > ol {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+li {
+  margin-bottom: 0.25rem;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+a:has(img) {
+  text-decoration: none;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-header .page-subtitle {
+  color: var(--muted);
+  font-size: 1.15rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.page-header img {
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.875em;
+  background-color: var(--code-bg);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+pre {
+  background-color: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  tab-size: 2;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  font-size: 0.9rem;
+  border-radius: 0;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.75rem;
+  vertical-align: top;
+}
+
+th {
+  background-color: var(--th-bg);
+  font-weight: 600;
+}
+
+blockquote {
+  margin-inline: 0;
+  border-left: 4px solid var(--border);
+  padding-left: 1rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  body {
+    max-width: none;
+    color: #000;
+    background: #fff;
+  }
+  .skip-link, nav {
+    display: none;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <nav aria-label="Main Navigation">
+    <ul>
+      <li><a href="https://hocbigg.github.io/" class="nav-brand">Hocbigg</a></li>
+      <li><a href="/statecraft/">Statecraft</a></li>
+      <li><a href="/statecraft/advanced_topics.html">Advanced Topics</a></li>
+      <li><a href="https://github.com/hocbigg/statecraft" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in new tab)</span></a></li>
+    </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article>
+
+<h1 id="advanced-topics-statecraft">Advanced Topics: Statecraft</h1>
+<p>These specialization tracks build upon the foundations established in the core curriculum. Self-directed learners should select one or two tracks aligned with their specific strategic interests rather than attempting to complete every track simultaneously.</p>
+<ul>
+<li><strong>Grand Strategy and Strategic Studies</strong> — The formulation and execution of long-term national policy, military doctrine, net assessment, and civil-military relations.</li>
+<li><strong>Regime Dynamics and Comparative Authoritarianism</strong> — The institutional mechanics of authoritarian survival, democratic backsliding, populist mobilization, and regime transitions.</li>
+<li><strong>Geoeconomics and Economic Statecraft</strong> — The deployment of economic instruments, including financial sanctions, trade controls, and currency leverage, to achieve geopolitical objectives.</li>
+<li><strong>Applied Political Theory and Public Ethics</strong> — Advanced normative theory applied to state action, covering human rights jurisprudence, comparative justice, minority rights, and public reason.</li>
+<li><strong>Conflict, Security, and Negotiation</strong> — Modern security management, counterterrorism strategy, international negotiation tradecraft, and the micro-dynamics of civil warfare.</li>
+</ul>
+<h2 id="grand-strategy-and-strategic-studies">Grand Strategy and Strategic Studies</h2>
+<p>This track covers the alignment of national ends, ways, and means across military planning, competitive assessment, and civilian governance.</p>
+<p>Grand strategy formulation: <a href="https://ssi.armywarcollege.edu/SSI-Media/Recent-Publications/Display/Article/3630586/us-army-war-college-guide-to-national-security-issues-vol-1-theory-of-war-and-s" target="_blank" rel="noopener noreferrer">U.S. Army War College Guide to National Security Issues, Vol. I: Theory of War and Strategy, 5th Ed. (Dr. J. Boone Bartholomees Jr., Strategic Studies Institute)</a> - An open military college textbook that details the analytical frameworks professional strategists use to translate political policy into military objectives.</p>
+<p>Net assessment methodology: <a href="https://www.airuniversity.af.edu/Portals/10/AUPress/Papers/DP_0016_SCHUTTE_CASTING_NET_ASSESSMENT.PDF" target="_blank" rel="noopener noreferrer">Casting Net Assessment: Andrew W. Marshall and the Epistemic Community of the Cold War (Lt. Col. John M. Schutte, Air University Press)</a> - A monograph analyzing the Pentagon's Office of Net Assessment and its long-range method for evaluating relative military balances and competitor blind spots.</p>
+<p>Nuclear deterrence and strategic stability: <a href="https://online.stanford.edu/courses/fsi-y0002-living-nuclear-brink-yesterday-and-today" target="_blank" rel="noopener noreferrer">Living at the Nuclear Brink: Yesterday and Today (William J. Perry and Scott Sagan, Stanford Online/edX)</a> - A free-to-audit course on escalation management, nuclear proliferation, and crisis stability taught by former defense officials and security scholars.</p>
+<p>Civil-military relations: <a href="https://ocw.mit.edu/courses/17-584-civil-military-relations-spring-2003/" target="_blank" rel="noopener noreferrer">Civil-Military Relations, 17.584 (Roger Petersen, MIT OpenCourseWare)</a> - A complete graduate-level syllabus with lecture notes examining civilian control, coups d'état, and military institutional culture across democratic and authoritarian regimes.</p>
+<h2 id="regime-dynamics-and-comparative-authoritarianism">Regime Dynamics and Comparative Authoritarianism</h2>
+<p>This track investigates how political regimes institutionalize power, resist external shocks, and experience democratic erosion or autocratic consolidation.</p>
+<p>Democratic erosion and resilience: <a href="https://participatepractically.com/courses/authlib" target="_blank" rel="noopener noreferrer">Countering Illiberalism &amp; Building Democratic Resilience (AUTHLIB / Participate Practically)</a> - An applied course based on European research that equips learners to diagnose illiberal institutional maneuvers and evaluate legal and civic counter-strategies.</p>
+<p>Conditions of democratic transitions: <a href="https://www.edx.org/learn/democracy/stanford-university-comparative-democratic-development-part-i-conditions-of-democracy" target="_blank" rel="noopener noreferrer">Comparative Democratic Development Part I: Conditions of Democracy (Larry Diamond, Stanford Online/edX)</a> - A structured university course evaluating the economic, cultural, and institutional variables that facilitate or impede democratic consolidation.</p>
+<p>Contemporary authoritarian shifts: <a href="https://www.youtube.com/playlist?list=PLh9mgdi4rNeyViG2ar68jkgEi4y6doNZy" target="_blank" rel="noopener noreferrer">Power and Politics in Today's World (Ian Shapiro, YaleCourses on YouTube)</a> - A complete filmed lecture series detailing post-Cold War political realignments, the resurgence of populist nationalism, and the decay of traditional party systems.</p>
+<p>Comparative authoritarian survival: <a href="https://books.google.com/books?isbn=9781107115828" target="_blank" rel="noopener noreferrer">How Dictatorships Work: Power, Personalization, and Collapse (Barbara Geddes, Joseph Wright, and Erica Frantz)</a> - An empirical, data-driven study of ruling coalitions, elite power-sharing, personalization of control, and vulnerability to collapse across autocracies.</p>
+<h2 id="geoeconomics-and-economic-statecraft">Geoeconomics and Economic Statecraft</h2>
+<p>This track explores the strategic use of asymmetric economic interdependencies, trade policy, and financial leverage as coercive instruments of state policy.</p>
+<p>Theoretical foundations of economic coercion: <a href="https://books.google.com/books?isbn=9780691204420" target="_blank" rel="noopener noreferrer">Economic Statecraft: New Edition (David A. Baldwin)</a> - The foundational monograph that develops an analytical framework for evaluating economic statecraft, positive inducements, and international economic pressure.</p>
+<p>International finance and monetary mechanics: <a href="https://learn.mru.org/courses/international-finance" target="_blank" rel="noopener noreferrer">International Finance (Marginal Revolution University)</a> - A video-based economics course covering exchange rate mechanics, balance-of-payments crises, and currency regimes necessary for analyzing financial warfare.</p>
+<p>Sanctions architecture and diplomatic coercion: <a href="https://books.google.com/books?isbn=9780231180269" target="_blank" rel="noopener noreferrer">The Art of Sanctions: A View from the Field (Richard Nephew)</a> - A practitioner's framework on how to design, calibrate, and enforce economic sanctions regimes by measuring economic pain against political resolve.</p>
+<p>Institutional political economy and development: <a href="https://www.coursera.org/learn/political-economy" target="_blank" rel="noopener noreferrer">Political Economy of Institutions and Development (Universiteit Leiden, Coursera)</a> - A free-to-audit course on how state capacity, domestic institutional design, and governance structures affect economic growth and resource autonomy.</p>
+<h2 id="applied-political-theory-and-public-ethics">Applied Political Theory and Public Ethics</h2>
+<p>This track examines advanced normative frameworks, ethical constraints on sovereign authority, and the legal obligations of states under international human rights regimes.</p>
+<p>International human rights jurisprudence: <a href="https://www.edx.org/learn/human-rights/universite-catholique-de-louvain-international-human-rights-law" target="_blank" rel="noopener noreferrer">International Human Rights Law (Olivier De Schutter, Université Catholique de Louvain / edX)</a> - A legal course analyzing state obligations, enforcement mechanisms, and international treaty protections against state encroachment.</p>
+<p>Comparative theories of justice: <a href="https://books.google.com/books?isbn=9780141037851" target="_blank" rel="noopener noreferrer">The Idea of Justice (Amartya Sen)</a> - An advanced treatise contrasting ideal-institutional approaches to justice with realization-focused comparisons aimed at removing actual societal deprivations.</p>
+<p>Minority rights and constitutional pluralism: <a href="https://books.google.com/books?isbn=9780198290919" target="_blank" rel="noopener noreferrer">Multicultural Citizenship: A Liberal Theory of Minority Rights (Will Kymlicka)</a> - The seminal text exploring how constitutional states reconcile liberal neutrality with group-differentiated rights and multiethnic stability.</p>
+<p>Public reason and post-secular legitimacy: <a href="https://www.sandiego.edu/pdf/pdf_library/habermaslecture031105_c939cceb2ab087bdfc6df291ec0fc3fa.pdf" target="_blank" rel="noopener noreferrer">Religion in the Public Sphere (Jürgen Habermas, University of San Diego)</a> - A foundational paper detailing the institutional requirements for translating religious argumentation into publicly justifiable policy in constitutional democracies.</p>
+<h2 id="conflict-security-and-negotiation">Conflict, Security, and Negotiation</h2>
+<p>This track provides specialized training in modern defense management, violent non-state actors, cross-border bargaining, and the logic of civil conflicts.</p>
+<p>International security management: <a href="https://www.coursera.org/learn/international-security-management" target="_blank" rel="noopener noreferrer">International Security Management (Erasmus University Rotterdam, Coursera)</a> - An applied course addressing the contemporary security environment, open-source intelligence collection, organized crime networks, and threat mitigation.</p>
+<p>Terrorism and counterterrorism strategy: <a href="https://www.coursera.org/learn/terrorism-and-counterterrorism" target="_blank" rel="noopener noreferrer">Terrorism and Counterterrorism: Comparing Theory and Practice (Universiteit Leiden, Coursera)</a> - A research-driven course evaluating the historical waves of terrorism, radicalization processes, and the efficacy of domestic and multilateral counterterrorism policies.</p>
+<p>International and diplomatic negotiation: <a href="https://www.coursera.org/learn/international-negotiation" target="_blank" rel="noopener noreferrer">International and Cross-Cultural Negotiation (ESSEC Business School, Coursera)</a> - An applied course on diplomatic bargaining that trains learners to navigate cultural negotiating styles, stakeholder interests, and impasse resolution.</p>
+<p>Micro-dynamics of internal armed conflict: <a href="https://books.google.com/books?isbn=9780521670043" target="_blank" rel="noopener noreferrer">The Logic of Violence in Civil War (Stathis N. Kalyvas)</a> - The field's standard theoretical and empirical text analyzing how information asymmetries, territorial control, and selective coercion shape violence in irregular civil wars.</p>
+    </article>
+  </main>
+
+</body>
+</html>
